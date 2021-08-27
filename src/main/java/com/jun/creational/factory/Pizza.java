@@ -3,21 +3,25 @@ package com.jun.creational.factory;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jun.creational.factory.abstractfactory.ingredients.Cheese;
+import com.jun.creational.factory.abstractfactory.ingredients.Clams;
+import com.jun.creational.factory.abstractfactory.ingredients.Dough;
+import com.jun.creational.factory.abstractfactory.ingredients.Pepperoni;
+import com.jun.creational.factory.abstractfactory.ingredients.Sauce;
+import com.jun.creational.factory.abstractfactory.ingredients.Veggies;
+
 public abstract class Pizza {
-	String name;
-	String dough;
-	String sauce;
+	protected String name;
+	protected Dough dough;
+	protected Sauce sauce;
+	protected Veggies veggies[];
+	protected Cheese cheese;
+	protected Pepperoni pepperoni;
+	protected Clams clam;
+	
 	List<String> toppings = new ArrayList<String>();
 
-	protected void prepare() {
-		System.out.println("Preparing " + name);
-		System.out.println("Tossing dough...");
-		System.out.println("Adding sauce...");
-		System.out.println("Adding toppings: ");
-		for (String topping : toppings) {
-			System.out.println("   " + topping);
-		}
-	};
+	protected abstract void prepare();;
 	
 	protected void bake() {
 		System.out.println("Bake for 25 minutes at 350");
@@ -33,5 +37,11 @@ public abstract class Pizza {
 
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	};
+	
+	
 }
