@@ -1,6 +1,6 @@
 package com.jun.behavioural.command;
 
-interface Command {
+interface CommandInterface {
 	void execute();
 }
 
@@ -14,7 +14,7 @@ class Receiver {
 	}
 }
 
-class OnCommand implements Command {
+class OnCommand implements CommandInterface {
 	private Receiver receiver;
 
 	public OnCommand(Receiver receiver) {
@@ -26,7 +26,7 @@ class OnCommand implements Command {
 	}
 }
 
-class OffCommand implements Command {
+class OffCommand implements CommandInterface {
 	private Receiver receiver;
 
 	public OffCommand(Receiver receiver) {
@@ -39,9 +39,9 @@ class OffCommand implements Command {
 }
 
 class Invoker {
-	private Command command;
+	private CommandInterface command;
 
-	public Invoker(Command command) {
+	public Invoker(CommandInterface command) {
 		this.command = command;
 	}
 
@@ -49,7 +49,7 @@ class Invoker {
 		this.command.execute();
 	}
 	
-	public void setCommand(Command command) {
+	public void setCommand(CommandInterface command) {
 		this.command = command;
 	}
 }
@@ -70,7 +70,7 @@ public class CommandDemo {
 	public static void main(String args[]) {
 // On command for TV with same invoker
 		Receiver receiver = new TV();
-		Command onCommand = new OnCommand(receiver);
+		CommandInterface onCommand = new OnCommand(receiver);
 		Invoker invoker = new Invoker(onCommand);
 		invoker.execute();
 // On command for DVDPlayer with same invoker
