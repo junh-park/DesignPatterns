@@ -1,4 +1,6 @@
-package com.jun.behavioural.state;
+package com.jun.structural.proxy.remoteproxy;
+
+import com.jun.behavioural.state.State;
 
 public class GumballMachine {
 	State soldOutState;
@@ -6,16 +8,12 @@ public class GumballMachine {
 	State hasQuarterState;
 	State soldState;
 	State winnerState;
+	String location;
 
 	State state = soldOutState;
 	private int count = 0;
 
 	public GumballMachine(int count) {
-		noQuarterState = new NoQuarterState(this);
-		soldOutState = new SoldOutState(this);
-		hasQuarterState = new HasQuarterState(this);
-		soldState = new SoldState(this);
-		
 		this.count = count;
 		if (count > 0) {
 			state = noQuarterState;
@@ -84,5 +82,13 @@ public class GumballMachine {
 		builder.append("Mighty Gumball, Inc.\n").append("Java-enabled StandingGumball Model #2004\n");
 		builder.append("Inventory: ").append(getCount()).append(" gumballs");
 		return builder.toString();
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public State getState() {
+		return state;
 	}
 }
