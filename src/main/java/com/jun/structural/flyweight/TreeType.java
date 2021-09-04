@@ -1,4 +1,4 @@
-package com.jun.creational.flyweight;
+package com.jun.structural.flyweight;
 
 import java.awt.Color;
 import java.awt.Graphics;
